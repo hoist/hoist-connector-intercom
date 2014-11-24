@@ -1,0 +1,45 @@
+<Response api-method="Current">
+    <Status>OK</Status>
+    <Jobs>
+        <Job>
+            <ID>J000001</ID>
+            <Name>Internal Time</Name>
+            <Description>Use this job to record your internal and non-billable time for activities such as annual leave, sick leave, professional development, staff meetings etc</Description>
+            <Client>
+                <ID>3845810</ID>
+                <Name>Hoist</Name>
+            </Client>
+            <ClientOrderNumber/>
+            <State>Planned</State>
+            <StartDate>2014-05-26T00:00:00</StartDate>
+            <DueDate>2015-05-26T00:00:00</DueDate>
+            <InternalID>4338732</InternalID>
+            <Assigned>
+                <Staff>
+                    <ID>150197</ID>
+                    <Name>Jamie</Name>
+                </Staff>
+            </Assigned>
+        </Job>
+        <Job>
+            <ID>J000002</ID>
+            <Name>Setup and Conversion Steps</Name>
+            <Description/>
+            <Client>
+                <ID>3845810</ID>
+                <Name>Hoist</Name>
+            </Client>
+            <ClientOrderNumber/>
+            <State>Planned</State>
+            <StartDate>2014-05-29T00:00:00</StartDate>
+            <DueDate>2014-06-12T00:00:00</DueDate>
+            <InternalID>4338733</InternalID>
+            <Assigned>
+                <Staff>
+                    <ID>150197</ID>
+                    <Name>Jamie</Name>
+                </Staff>
+            </Assigned>
+        </Job>
+    </Jobs>
+</Response>
