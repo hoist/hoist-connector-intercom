@@ -1,0 +1,15 @@
+{
+    "Response": {
+        "-api-method": "Search",
+        "Status": "OK",
+        "Clients": {
+            "Client": {
+                "ID": "3845810",
+                "Name": "Hoist",
+                "IsProspect": "No",
+                "IsArchived": "No",
+                "IsDeleted": "No"
+            }
+        }
+    }
+}

@@ -6,7 +6,7 @@ var path = require('path');
 var expect = require('chai').expect;
 var config = require('config');
 
-describe('WorkflowMaxConnector', function () {
+describe('WorkflowMaxConnector #get', function () {
   this.timeout(500000);
   describe('valid connection to get jobs', function () {
     var response;
@@ -25,6 +25,44 @@ describe('WorkflowMaxConnector', function () {
       }).catch(function(err) {
         console.log("error", err);
       })).to.become(expectedResponse.Response.Jobs.Job.length);
+    });
+  });
+  describe('valid connection to get clients with query', function () {
+    var response;
+    var connector;
+    var expectedResponse = require(path.resolve(__dirname, '../fixtures/responses/get_client.api.json'));
+    before(function () {
+      connector = new WorkflowMax({
+        apiKey: config.apiKey, 
+        accountKey: config.accountKey
+      });
+      response = connector.get('client.api/search', {query:'h'});
+    });
+    it('returns expected json', function () {
+      return expect(response.then(function (json) {
+        return json.Response.Clients.Client.length;
+      }).catch(function(err) {
+        console.log("error", err);
+      })).to.become(expectedResponse.Response.Clients.Client.length);
+    });
+  });
+  describe('valid connection to get clients with query in path', function () {
+    var response;
+    var connector;
+    var expectedResponse = require(path.resolve(__dirname, '../fixtures/responses/get_client.api.json'));
+    before(function () {
+      connector = new WorkflowMax({
+        apiKey: config.apiKey, 
+        accountKey: config.accountKey
+      });
+      response = connector.get('client.api/search?query=h');
+    });
+    it('returns expected json', function () {
+      return expect(response.then(function (json) {
+        return json.Response.Clients.Client.length;
+      }).catch(function(err) {
+        console.log("error", err);
+      })).to.become(expectedResponse.Response.Clients.Client.length);
     });
   });
 });

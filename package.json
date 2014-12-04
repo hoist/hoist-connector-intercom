@@ -39,6 +39,7 @@
     "oauth": "git://github.com/hoist/node-oauth",
     "request": "^2.48.0",
     "request-promise": "^0.3.2",
-    "xml2js": "^0.4.4"
+    "xml2js": "^0.4.4",
+    "jsontoxml": "^0.0.11"
   }
 }
