@@ -17,7 +17,7 @@ describe('WorkflowMaxConnector', function () {
         apiKey: config.apiKey, 
         accountKey: config.accountKey
       });
-      response = connector.get('job.api');
+      response = connector.get('job.api/current');
     });
     it('returns expected json', function () {
       return expect(response.then(function (json) {
