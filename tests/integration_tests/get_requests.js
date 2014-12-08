@@ -36,7 +36,7 @@ describe('WorkflowMaxConnector #get', function () {
         apiKey: config.apiKey, 
         accountKey: config.accountKey
       });
-      response = connector.get('client.api/search', {query:'hoist'});
+      response = connector.get('client.api/search', {query:'monkey'});
     });
     it('returns expected json', function () {
       return expect(response.then(function (json) {
@@ -55,7 +55,7 @@ describe('WorkflowMaxConnector #get', function () {
         apiKey: config.apiKey, 
         accountKey: config.accountKey
       });
-      response = connector.get('client.api/search?query=hoist');
+      response = connector.get('client.api/search?query=monkey');
     });
     it('returns expected json', function () {
       return expect(response.then(function (json) {

@@ -3,22 +3,13 @@
     "-api-method": "Search",
     "Status": "OK",
     "Clients": {
-      "Client": [
-        {
-          "ID": "5030190",
-          "Name": "Hoist",
-          "IsProspect": "No",
-          "IsArchived": "No",
-          "IsDeleted": "No"
-        },
-        {
-          "ID": "5030191",
-          "Name": "Hoist",
-          "IsProspect": "No",
-          "IsArchived": "No",
-          "IsDeleted": "No"
-        }
-      ]
+      "Client": {
+        "ID": "3514592",
+        "Name": "Chaos Monkey",
+        "IsProspect": "No",
+        "IsArchived": "No",
+        "IsDeleted": "No"
+      }
     }
   }
 }
