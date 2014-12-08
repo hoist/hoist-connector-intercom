@@ -17,11 +17,10 @@ describe('WorkflowMaxConnector #get', function () {
         apiKey: config.apiKey, 
         accountKey: config.accountKey
       });
-      response = connector.get('job.api/get/j0001');
+      response = connector.get('job.api/get/J0001');
     });
     it('returns expected json', function () {
       return expect(response.then(function (json) {
-        console.log(json);
         return json.Response.Job.Name;
       }).catch(function(err) {
         console.log("error", err);
@@ -41,7 +40,6 @@ describe('WorkflowMaxConnector #get', function () {
     });
     it('returns expected json', function () {
       return expect(response.then(function (json) {
-        console.log(json);
         return json.Response.Clients.Client.Name;
       }).catch(function(err) {
         console.log("error", err);
@@ -61,7 +59,6 @@ describe('WorkflowMaxConnector #get', function () {
     });
     it('returns expected json', function () {
       return expect(response.then(function (json) {
-        console.log(json);
         return json.Response.Clients.Client.Name;
       }).catch(function(err) {
         console.log("error", err);
