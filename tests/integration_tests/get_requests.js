@@ -40,10 +40,10 @@ describe('WorkflowMaxConnector #get', function () {
     });
     it('returns expected json', function () {
       return expect(response.then(function (json) {
-        return json.Response.Clients.Client.length;
+        return json.Response.Clients.Client.Name;
       }).catch(function(err) {
         console.log("error", err);
-      })).to.become(expectedResponse.Response.Clients.Client.length);
+      })).to.become(expectedResponse.Response.Clients.Client.Name);
     });
   });
   describe('valid connection to get clients with query in path', function () {
@@ -59,10 +59,10 @@ describe('WorkflowMaxConnector #get', function () {
     });
     it('returns expected json', function () {
       return expect(response.then(function (json) {
-        return json.Response.Clients.Client.length;
+        return json.Response.Clients.Client.Name;
       }).catch(function(err) {
         console.log("error", err);
-      })).to.become(expectedResponse.Response.Clients.Client.length);
+      })).to.become(expectedResponse.Response.Clients.Client.Name);
     });
   });
 });
