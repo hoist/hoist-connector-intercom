@@ -1,0 +1,28 @@
+<Response api-method="Search">
+    <Status>OK</Status>
+    <Clients>
+        <Client>
+            <ID>3514592</ID>
+            <Name>Chaos Monkey</Name>
+            <Address />
+            <City />
+            <Region />
+            <PostCode />
+            <Country />
+            <PostalAddress />
+            <PostalCity />
+            <PostalRegion />
+            <PostalPostCode />
+            <PostalCountry />
+            <Phone />
+            <Fax />
+            <Website />
+            <ReferralSource />
+            <ExportCode />
+            <IsProspect>No</IsProspect>
+            <IsArchived>No</IsArchived>
+            <IsDeleted>No</IsDeleted>
+            <Contacts />
+        </Client>
+    </Clients>
+</Response>

@@ -1,0 +1,15 @@
+{
+  "Response": {
+    "-api-method": "Search",
+    "Status": "OK",
+    "Clients": {
+      "Client": {
+        "ID": "3514592",
+        "Name": "Chaos Monkey",
+        "IsProspect": "No",
+        "IsArchived": "No",
+        "IsDeleted": "No"
+      }
+    }
+  }
+}
