@@ -2,7 +2,30 @@
     <Status>OK</Status>
     <Clients>
         <Client>
-            <ID>3845810</ID>
+            <ID>5030190</ID>
+            <Name>Hoist</Name>
+            <Address />
+            <City />
+            <Region />
+            <PostCode />
+            <Country />
+            <PostalAddress />
+            <PostalCity />
+            <PostalRegion />
+            <PostalPostCode />
+            <PostalCountry />
+            <Phone />
+            <Fax />
+            <Website />
+            <ReferralSource />
+            <ExportCode />
+            <IsProspect>No</IsProspect>
+            <IsArchived>No</IsArchived>
+            <IsDeleted>No</IsDeleted>
+            <Contacts />
+        </Client>
+        <Client>
+            <ID>5030191</ID>
             <Name>Hoist</Name>
             <Address />
             <City />

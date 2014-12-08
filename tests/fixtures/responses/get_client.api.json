@@ -1,15 +1,24 @@
 {
-    "Response": {
-        "-api-method": "Search",
-        "Status": "OK",
-        "Clients": {
-            "Client": {
-                "ID": "3845810",
-                "Name": "Hoist",
-                "IsProspect": "No",
-                "IsArchived": "No",
-                "IsDeleted": "No"
-            }
+  "Response": {
+    "-api-method": "Search",
+    "Status": "OK",
+    "Clients": {
+      "Client": [
+        {
+          "ID": "5030190",
+          "Name": "Hoist",
+          "IsProspect": "No",
+          "IsArchived": "No",
+          "IsDeleted": "No"
+        },
+        {
+          "ID": "5030191",
+          "Name": "Hoist",
+          "IsProspect": "No",
+          "IsArchived": "No",
+          "IsDeleted": "No"
         }
+      ]
     }
+  }
 }

@@ -17,14 +17,14 @@ describe('WorkflowMaxConnector #get', function () {
         apiKey: config.apiKey, 
         accountKey: config.accountKey
       });
-      response = connector.get('job.api/current');
+      response = connector.get('job.api/get/J0001');
     });
     it('returns expected json', function () {
       return expect(response.then(function (json) {
-        return json.Response.Jobs.Job.length;
+        return json.Response.Job.Name;
       }).catch(function(err) {
         console.log("error", err);
-      })).to.become(expectedResponse.Response.Jobs.Job.length);
+      })).to.become(expectedResponse.Response.Job.Name);
     });
   });
   describe('valid connection to get clients with query', function () {
@@ -36,7 +36,7 @@ describe('WorkflowMaxConnector #get', function () {
         apiKey: config.apiKey, 
         accountKey: config.accountKey
       });
-      response = connector.get('client.api/search', {query:'h'});
+      response = connector.get('client.api/search', {query:'hoist'});
     });
     it('returns expected json', function () {
       return expect(response.then(function (json) {
@@ -55,7 +55,7 @@ describe('WorkflowMaxConnector #get', function () {
         apiKey: config.apiKey, 
         accountKey: config.accountKey
       });
-      response = connector.get('client.api/search?query=h');
+      response = connector.get('client.api/search?query=hoist');
     });
     it('returns expected json', function () {
       return expect(response.then(function (json) {

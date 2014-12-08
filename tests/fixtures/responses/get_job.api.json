@@ -1,52 +1,20 @@
 {
-    "Response": {
-        "$": {
-            "api-method": "Current"
-        },
-        "Status": "OK",
-        "Jobs": {
-            "Job": [
-                {
-                    "ID": "J000001",
-                    "Name": "Internal Time",
-                    "Description": "Use this job to record your internal and non-billable time for activities such as annual leave, sick leave, professional development, staff meetings etc",
-                    "Client": {
-                        "ID": "3845810",
-                        "Name": "Hoist"
-                    },
-                    "ClientOrderNumber": "",
-                    "State": "Planned",
-                    "StartDate": "2014-05-26T00:00:00",
-                    "DueDate": "2015-05-26T00:00:00",
-                    "InternalID": "4338732",
-                    "Assigned": {
-                        "Staff": {
-                            "ID": "150197",
-                            "Name": "Jamie"
-                        }
-                    }
-                },
-                {
-                    "ID": "J000002",
-                    "Name": "Setup and Conversion Steps",
-                    "Description": "",
-                    "Client": {
-                        "ID": "3845810",
-                        "Name": "Hoist"
-                    },
-                    "ClientOrderNumber": "",
-                    "State": "Planned",
-                    "StartDate": "2014-05-29T00:00:00",
-                    "DueDate": "2014-06-12T00:00:00",
-                    "InternalID": "4338733",
-                    "Assigned": {
-                        "Staff": {
-                            "ID": "150197",
-                            "Name": "Jamie"
-                        }
-                    }
-                }
-            ]
-        }
+  "Response": {
+    "-api-method": "Current",
+    "Status": "OK",
+    "Job": {
+      "ID": "J0001",
+      "Name": "Promo video",
+      "Description": "October Promotion",
+      "Client": {
+        "ID": "3136135",
+        "Name": "2 Architecture Studio Limited"
+      },
+      "ClientOrderNumber": "34479",
+      "State": "Planned",
+      "StartDate": "2013-10-01T00:00:00",
+      "DueDate": "2013-10-29T00:00:00",
+      "InternalID": "3480480"
     }
+  }
 }
