@@ -67,14 +67,41 @@ describe('WorkflowMaxConnector', function () {
       };
       before(function () {
         sinon.stub(connector, 'request').returns(BBPromise.resolve(response));
-        result = connector.post('job.api', data);
+        result = connector.post('staff.api/add', data);
       });
       after(function () {
         connector.request.restore();
       });
       it('calls #request', function () {
         expect(connector.request)
-          .to.have.been.calledWith('POST', 'job.api', null, data);
+          .to.have.been.calledWith('POST', 'staff.api/add', null, data);
+      });
+    });
+  });
+  describe('#put', function() {
+    describe('with no data', function () {
+      it('rejects', function () {
+        expect(function () {
+          connector.put('/path');
+        }).to.throw(errors.connector.request.InvalidError);
+      });
+    });
+    describe('with data', function () {
+      var response = {};
+      var result;
+      var data = {
+        query: 'query'
+      };
+      before(function () {
+        sinon.stub(connector, 'request').returns(BBPromise.resolve(response));
+        result = connector.put('client.api/update', data);
+      });
+      after(function () {
+        connector.request.restore();
+      });
+      it('calls #request', function () {
+        expect(connector.request)
+          .to.have.been.calledWith('PUT', 'client.api/update', null, data);
       });
     });
   });
@@ -315,6 +342,103 @@ describe('WorkflowMaxConnector', function () {
           sinon.stub(connector, 'requestPromiseHelper').returns(BBPromise.resolve(response));
           sinon.stub(connector.parser, 'parseStringAsync').returns(BBPromise.resolve());
           result = connector.request('POST', 'staff.api/add', null, data);
+        });
+        after(function () {
+          connector.requestPromiseHelper.restore();
+          connector.parser.parseStringAsync.restore();
+        });
+        it('calls requestPromiseHelper', function () {
+          expect(connector.requestPromiseHelper)
+            .to.have.been.calledWith(options);
+        });
+        it('calls parser.parseStringAsync', function () {
+          expect(connector.parser.parseStringAsync)
+            .to.have.been.calledWith(response.body);
+        });
+      });
+    });
+    describe('PUT', function () {
+      describe('with xml string', function () {
+        var response = {
+          body: 'body'
+        };
+        var data = '<Staff><Name>John</Name></Staff>';
+        var options = {
+          method: 'PUT',
+          resolveWithFullResponse: true,
+          uri: 'https://api.workflowmax.com/staff.api/add?apiKey=' + config.apiKey + '&accountKey=' + config.accountKey,
+          body: data,
+          contentType: 'application/xml'
+        };
+        var result;
+        before(function () {
+          sinon.stub(connector, 'requestPromiseHelper').returns(BBPromise.resolve(response));
+          sinon.stub(connector.parser, 'parseStringAsync').returns(BBPromise.resolve());
+          result = connector.request('PUT', 'staff.api/add', null, data);
+        });
+        after(function () {
+          connector.requestPromiseHelper.restore();
+          connector.parser.parseStringAsync.restore();
+        });
+        it('calls requestPromiseHelper', function () {
+          expect(connector.requestPromiseHelper)
+            .to.have.been.calledWith(options);
+        });
+        it('calls parser.parseStringAsync', function () {
+          expect(connector.parser.parseStringAsync)
+            .to.have.been.calledWith(response.body);
+        });
+      });
+      describe('with json string', function () {
+        var response = {
+          body: 'body'
+        };
+        var data = '{"Staff":{"Name":"John"}}';
+        var xml = '<Staff><Name>John</Name></Staff>';
+        var options = {
+          method: 'PUT',
+          resolveWithFullResponse: true,
+          uri: 'https://api.workflowmax.com/staff.api/add?apiKey=' + config.apiKey + '&accountKey=' + config.accountKey,
+          body: xml,
+          contentType: 'application/xml'
+        };
+        var result;
+        before(function () {
+          sinon.stub(connector, 'requestPromiseHelper').returns(BBPromise.resolve(response));
+          sinon.stub(connector.parser, 'parseStringAsync').returns(BBPromise.resolve());
+          result = connector.request('PUT', 'staff.api/add', null, data);
+        });
+        after(function () {
+          connector.requestPromiseHelper.restore();
+          connector.parser.parseStringAsync.restore();
+        });
+        it('calls requestPromiseHelper', function () {
+          expect(connector.requestPromiseHelper)
+            .to.have.been.calledWith(options);
+        });
+        it('calls parser.parseStringAsync', function () {
+          expect(connector.parser.parseStringAsync)
+            .to.have.been.calledWith(response.body);
+        });
+      });
+      describe('with object', function () {
+        var response = {
+          body: 'body'
+        };
+        var data = {Staff:{Name:"John"}};
+        var xml = '<Staff><Name>John</Name></Staff>';
+        var options = {
+          method: 'PUT',
+          resolveWithFullResponse: true,
+          uri: 'https://api.workflowmax.com/staff.api/add?apiKey=' + config.apiKey + '&accountKey=' + config.accountKey,
+          body: xml,
+          contentType: 'application/xml'
+        };
+        var result;
+        before(function () {
+          sinon.stub(connector, 'requestPromiseHelper').returns(BBPromise.resolve(response));
+          sinon.stub(connector.parser, 'parseStringAsync').returns(BBPromise.resolve());
+          result = connector.request('PUT', 'staff.api/add', null, data);
         });
         after(function () {
           connector.requestPromiseHelper.restore();
