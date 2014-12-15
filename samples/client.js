@@ -1,12 +1,12 @@
 /* Just copy and paste this snippet into your code */
 
-module.main = function(event, done) {
+module.exports = function (event, done) {
 
   var wfm = Hoist.connector('<key>');
-  wfm.get('/jobs', function(jobs) {
-    for(var index = 0; index < jobs.length; index++) {
-      Hoist.event.raise('job:found', jobs[index]);
-    }
-  });
+  wfm.put('/client.api/update', <client> )
+    .then(function (client) {
+      return Hoist.event.raise('client:updated', client);
+    })
+    .then(done);
 
 };

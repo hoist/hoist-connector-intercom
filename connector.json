@@ -4,7 +4,7 @@
   "url": "http://www.workflowmax.com",
   "auth_types" : {
     "Private": {
-      "setup_help": ""
+      "setup_help": "./samples/setupHelpPrivate.md",
     }, 
     "Public": {
       "setup_help": ""

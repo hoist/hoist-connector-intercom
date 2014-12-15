@@ -1,12 +1,16 @@
 /* Just copy and paste this snippet into your code */
 
-module.main = function(event, done) {
+module.exports = function (event, done) {
 
   var wfm = Hoist.connector('<key>');
-  wfm.get('/jobs', function(jobs) {
-    for(var index = 0; index < jobs.length; index++) {
-      Hoist.event.raise('job:found', jobs[index]);
-    }
-  });
+  wfm.get('/purchaseorder.api/current')
+    .then(function (purchaseOrders) {
+      var promises = [];
+      for (var index = 0; index < purchaseOrders.length; index++) {
+        promises.push(Hoist.event.raise('purchaseOrder:found', purchaseOrders[index]));
+      }
+      return Hoist.promise.all(promises);
+    })
+    .then(done);
 
 };
