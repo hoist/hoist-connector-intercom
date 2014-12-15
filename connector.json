@@ -14,12 +14,14 @@
     "key": "apiKey",
     "type" : "text",
     "description": "API Key",
-    "for_types": ["Private", "Public"]
+    "for_types": ["Private", "Public"],
+    "required": true
   },{
     "key": "accountKey",
     "type" : "text",
     "description": "Account Key",
-    "for_types": ["Private", "Public"]
+    "for_types": ["Private", "Public"],
+    "required": true
   }],
   "samples" : {
     "gettingStarted" : "./samples/gettingStarted.js"
