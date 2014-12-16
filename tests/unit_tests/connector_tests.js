@@ -105,6 +105,21 @@ describe('WorkflowMaxConnector', function () {
       });
     });
   });
+  describe('#delete', function () {
+    var response = {};
+    var result;
+    before(function () {
+      sinon.stub(connector, 'request').returns(BBPromise.resolve(response));
+      result = connector.delete('job.api');
+    });
+    after(function () {
+      connector.request.restore();
+    });
+    it('calls #request', function () {
+      expect(connector.request)
+        .to.have.been.calledWith('DELETE', 'job.api', undefined, undefined);
+    });
+  });
   describe('#request', function () {
     describe('GET', function () {
       describe('with no queryParams', function () {

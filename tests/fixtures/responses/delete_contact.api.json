@@ -1,0 +1,11 @@
+{
+  "Response": {
+    "-api-method": "Contact",
+    "Status": "OK",
+    "Contact": {
+      "ID": "3500761",
+      "Name": "smithe",
+      "IsPrimary": "No"
+    }
+  }
+}

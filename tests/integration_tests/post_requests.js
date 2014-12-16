@@ -7,7 +7,6 @@ var expect = require('chai').expect;
 var config = require('config');
 
 describe('WorkflowMaxConnector #post', function () {
-  // wfm user license limit reached, needs a new accountkey each test
   this.timeout(500000);
   describe('valid connection to post client with json object', function () {
     var response;

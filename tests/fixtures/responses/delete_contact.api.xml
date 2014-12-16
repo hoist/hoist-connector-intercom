@@ -1,0 +1,14 @@
+<Response api-method="Contact">
+    <Status>OK</Status>
+    <Contact>
+        <ID>3500761</ID>
+        <Name>smithe</Name>
+        <Mobile></Mobile>
+        <Email></Email>
+        <Phone></Phone>
+        <Position></Position>
+        <Salutation></Salutation>
+        <Addressee></Addressee>
+        <IsPrimary>No</IsPrimary>
+    </Contact>
+</Response>
