@@ -477,4 +477,67 @@ describe('WorkflowMaxConnector', function () {
       });
     });
   });
+  describe('#authorize', function () {
+    describe('with accountKey and apiKey', function () {
+      var options = {
+        apiKey: 'apiKey',
+        accountKey: 'accountKey'
+      }
+      before(function () {
+        return connector.authorize(options);
+      });
+      after(function () {
+        connector.settings = {
+          apiKey: config.apiKey,
+          accountKey: config.accountKey
+        };
+      });
+      it('sets the apiKey', function () {
+        expect(connector.settings.apiKey).to.eql(options.apiKey);
+      });
+      it('sets the accountKey', function () {
+        expect(connector.settings.accountKey).to.eql(options.accountKey);
+      });
+    });
+    describe('with only accountKey', function () {
+      var options = {
+        accountKey: 'accountKey'
+      }
+      before(function () {
+        return connector.authorize(options);
+      });
+      after(function () {
+        connector.settings = {
+          apiKey: config.apiKey,
+          accountKey: config.accountKey
+        };
+      });
+      it('does not change the apiKey', function () {
+        expect(connector.settings.apiKey).to.eql(config.apiKey);
+      });
+      it('sets the accountKey', function () {
+        expect(connector.settings.accountKey).to.eql(options.accountKey);
+      });
+    });
+    describe('with only apiKey', function () {
+      var options = {
+        apiKey: 'apiKey'
+      }
+      before(function () {
+        return connector.authorize(options);
+      });
+      after(function () {
+        connector.settings = {
+          apiKey: config.apiKey,
+          accountKey: config.accountKey
+        };
+      });
+      it('sets the apiKey', function () {
+        expect(connector.settings.apiKey).to.eql(options.apiKey);
+      });
+      it('does not change the accountKey', function () {
+        expect(connector.settings.accountKey).to.eql(config.accountKey);
+      });
+    });
+  });
 });
