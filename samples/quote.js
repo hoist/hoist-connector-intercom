@@ -4,7 +4,8 @@ module.exports = function (event, done) {
 
   var wfm = Hoist.connector('<key>');
   wfm.get('/quote.api/current')
-    .then(function (quotes) {
+    .then(function (result) {
+      var quotes = result.quotes.quote;
       var promises = [];
       for (var index = 0; index < quotes.length; index++) {
         promises.push(Hoist.event.raise('quote:found', quotes[index]));

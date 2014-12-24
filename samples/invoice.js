@@ -4,7 +4,8 @@ module.exports = function (event, done) {
 
   var wfm = Hoist.connector('<key>');
   wfm.get('/invoice.api/current')
-    .then(function (invoices) {
+    .then(function (result) {
+      var invoices = result.invoices.invoice;
       var promises = [];
       for (var index = 0; index < invoices.length; index++) {
         promises.push(Hoist.event.raise('invoice:found', invoices[index]));

@@ -4,7 +4,8 @@ module.exports = function (event, done) {
 
   var wfm = Hoist.connector('<key>');
   wfm.get('/lead.api/current')
-    .then(function (leads) {
+    .then(function (result) {
+      var leads = result.leads.lead;
       var promises = [];
       for (var index = 0; index < leads.length; index++) {
         promises.push(Hoist.event.raise('lead:found', leads[index]));
