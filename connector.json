@@ -22,6 +22,12 @@
     "description": "Account Key",
     "for_types": ["Private", "Public"],
     "required": true
+  },{
+    "key": "domain",
+    "type" : "text",
+    "description": "Domain",
+    "for_types": ["Private", "Public"],
+    "required": true
   }],
   "samples" : {
     "gettingStarted" : "./samples/gettingStarted.js"
