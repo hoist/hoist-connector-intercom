@@ -13,7 +13,8 @@ describe('WorkflowMaxConnector', function () {
   before(function () {
     connector = new WorkflowMax({
       apiKey: config.apiKey,
-      accountKey: config.accountKey
+      accountKey: config.accountKey,
+      domain: config.domain + 'test'
     });
   });
   describe('#get', function () {
@@ -129,7 +130,7 @@ describe('WorkflowMaxConnector', function () {
         var options = {
           method: 'GET',
           resolveWithFullResponse: true,
-          uri: 'https://api.workflowmax.com/job.api/current?apiKey=' + config.apiKey + '&accountKey=' + config.accountKey
+          uri: 'https://api.workflowmax.comtest/job.api/current?apiKey=' + config.apiKey + '&accountKey=' + config.accountKey
         }
         var result;
         before(function () {
@@ -138,6 +139,36 @@ describe('WorkflowMaxConnector', function () {
           result = connector.request('GET', '/job.api/current');
         });
         after(function () {
+          connector.requestPromiseHelper.restore();
+          connector.parser.parseStringAsync.restore();
+        });
+        it('calls requestPromiseHelper', function () {
+          expect(connector.requestPromiseHelper)
+            .to.have.been.calledWith(options);
+        });
+        it('calls parser.parseStringAsync', function () {
+          expect(connector.parser.parseStringAsync)
+            .to.have.been.calledWith(response.body);
+        });
+      });
+      describe('with no queryParams, with no domain in settings', function () {
+        var response = {
+          body: 'body'
+        };
+        var options = {
+          method: 'GET',
+          resolveWithFullResponse: true,
+          uri: 'https://api.workflowmax.com/job.api/current?apiKey=' + config.apiKey + '&accountKey=' + config.accountKey
+        }
+        var result;
+        before(function () {
+          connector.settings.domain = undefined;
+          sinon.stub(connector, 'requestPromiseHelper').returns(BBPromise.resolve(response));
+          sinon.stub(connector.parser, 'parseStringAsync').returns(BBPromise.resolve());
+          result = connector.request('GET', '/job.api/current');
+        });
+        after(function () {
+          connector.settings.domain = config.domain + 'test';
           connector.requestPromiseHelper.restore();
           connector.parser.parseStringAsync.restore();
         });
@@ -161,7 +192,7 @@ describe('WorkflowMaxConnector', function () {
         var options = {
           method: 'GET',
           resolveWithFullResponse: true,
-          uri: 'https://api.workflowmax.com/job.api/current?apiKey=' + config.apiKey + '&accountKey=' + config.accountKey + '&query=' + queryParams.query
+          uri: 'https://api.workflowmax.comtest/job.api/current?apiKey=' + config.apiKey + '&accountKey=' + config.accountKey + '&query=' + queryParams.query
         };
         var result;
         before(function () {
@@ -190,7 +221,7 @@ describe('WorkflowMaxConnector', function () {
         var options = {
           method: 'GET',
           resolveWithFullResponse: true,
-          uri: 'https://api.workflowmax.com/job.api/current?apiKey=' + config.apiKey + '&accountKey=' + config.accountKey + '&query=query'
+          uri: 'https://api.workflowmax.comtest/job.api/current?apiKey=' + config.apiKey + '&accountKey=' + config.accountKey + '&query=query'
         };
         var result;
         before(function () {
@@ -222,7 +253,7 @@ describe('WorkflowMaxConnector', function () {
         var options = {
           method: 'GET',
           resolveWithFullResponse: true,
-          uri: 'https://api.workflowmax.com/job.api/current?apiKey=' + config.apiKey + '&accountKey=' + config.accountKey + '&querypath=querypath&query=' + queryParams.query
+          uri: 'https://api.workflowmax.comtest/job.api/current?apiKey=' + config.apiKey + '&accountKey=' + config.accountKey + '&querypath=querypath&query=' + queryParams.query
         };
         var result;
         before(function () {
@@ -253,7 +284,7 @@ describe('WorkflowMaxConnector', function () {
         var options = {
           method: 'GET',
           resolveWithFullResponse: true,
-          uri: 'https://api.workflowmax.com/job.api/current?apiKey=' + config.apiKey + '&accountKey=' + config.accountKey + '&query=' + queryParams.query
+          uri: 'https://api.workflowmax.comtest/job.api/current?apiKey=' + config.apiKey + '&accountKey=' + config.accountKey + '&query=' + queryParams.query
         };
         var result;
         before(function () {
@@ -284,7 +315,7 @@ describe('WorkflowMaxConnector', function () {
         var options = {
           method: 'POST',
           resolveWithFullResponse: true,
-          uri: 'https://api.workflowmax.com/staff.api/add?apiKey=' + config.apiKey + '&accountKey=' + config.accountKey,
+          uri: 'https://api.workflowmax.comtest/staff.api/add?apiKey=' + config.apiKey + '&accountKey=' + config.accountKey,
           body: data,
           contentType: 'application/xml'
         };
@@ -316,7 +347,7 @@ describe('WorkflowMaxConnector', function () {
         var options = {
           method: 'POST',
           resolveWithFullResponse: true,
-          uri: 'https://api.workflowmax.com/staff.api/add?apiKey=' + config.apiKey + '&accountKey=' + config.accountKey,
+          uri: 'https://api.workflowmax.comtest/staff.api/add?apiKey=' + config.apiKey + '&accountKey=' + config.accountKey,
           body: xml,
           contentType: 'application/xml'
         };
@@ -348,7 +379,7 @@ describe('WorkflowMaxConnector', function () {
         var options = {
           method: 'POST',
           resolveWithFullResponse: true,
-          uri: 'https://api.workflowmax.com/staff.api/add?apiKey=' + config.apiKey + '&accountKey=' + config.accountKey,
+          uri: 'https://api.workflowmax.comtest/staff.api/add?apiKey=' + config.apiKey + '&accountKey=' + config.accountKey,
           body: xml,
           contentType: 'application/xml'
         };
@@ -381,7 +412,7 @@ describe('WorkflowMaxConnector', function () {
         var options = {
           method: 'PUT',
           resolveWithFullResponse: true,
-          uri: 'https://api.workflowmax.com/staff.api/add?apiKey=' + config.apiKey + '&accountKey=' + config.accountKey,
+          uri: 'https://api.workflowmax.comtest/staff.api/add?apiKey=' + config.apiKey + '&accountKey=' + config.accountKey,
           body: data,
           contentType: 'application/xml'
         };
@@ -413,7 +444,7 @@ describe('WorkflowMaxConnector', function () {
         var options = {
           method: 'PUT',
           resolveWithFullResponse: true,
-          uri: 'https://api.workflowmax.com/staff.api/add?apiKey=' + config.apiKey + '&accountKey=' + config.accountKey,
+          uri: 'https://api.workflowmax.comtest/staff.api/add?apiKey=' + config.apiKey + '&accountKey=' + config.accountKey,
           body: xml,
           contentType: 'application/xml'
         };
@@ -445,7 +476,7 @@ describe('WorkflowMaxConnector', function () {
         var options = {
           method: 'PUT',
           resolveWithFullResponse: true,
-          uri: 'https://api.workflowmax.com/staff.api/add?apiKey=' + config.apiKey + '&accountKey=' + config.accountKey,
+          uri: 'https://api.workflowmax.comtest/staff.api/add?apiKey=' + config.apiKey + '&accountKey=' + config.accountKey,
           body: xml,
           contentType: 'application/xml'
         };
@@ -478,10 +509,11 @@ describe('WorkflowMaxConnector', function () {
     });
   });
   describe('#authorize', function () {
-    describe('with accountKey and apiKey', function () {
+    describe('with accountKey and apiKey and domain', function () {
       var options = {
         apiKey: 'apiKey',
-        accountKey: 'accountKey'
+        accountKey: 'accountKey',
+        domain: 'newdomain'
       }
       before(function () {
         return connector.authorize(options);
@@ -497,6 +529,33 @@ describe('WorkflowMaxConnector', function () {
       });
       it('sets the accountKey', function () {
         expect(connector.settings.accountKey).to.eql(options.accountKey);
+      });
+      it('sets the domain', function () {
+        expect(connector.settings.domain).to.eql(options.domain);
+      });
+    });
+    describe('with only domain', function () {
+      var options = {
+        domain: 'domain'
+      }
+      before(function () {
+        return connector.authorize(options);
+      });
+      after(function () {
+        connector.settings = {
+          apiKey: config.apiKey,
+          accountKey: config.accountKey,
+          domain: config.domain + 'test'
+        };
+      });
+      it('does not change the apiKey', function () {
+        expect(connector.settings.apiKey).to.eql(config.apiKey);
+      });
+      it('does not change the accountKey', function () {
+        expect(connector.settings.accountKey).to.eql(config.accountKey);
+      });
+      it('sets the domain', function () {
+        expect(connector.settings.domain).to.eql(options.domain);
       });
     });
     describe('with only accountKey', function () {
@@ -517,6 +576,9 @@ describe('WorkflowMaxConnector', function () {
       });
       it('sets the accountKey', function () {
         expect(connector.settings.accountKey).to.eql(options.accountKey);
+      });
+      it('does not change the domain', function () {
+        expect(connector.settings.domain).to.eql(config.domain + 'test');
       });
     });
     describe('with only apiKey', function () {

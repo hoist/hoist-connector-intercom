@@ -8,14 +8,15 @@ var config = require('config');
 
 describe('WorkflowMaxConnector #get', function () {
   this.timeout(500000);
-  describe('valid connection to get jobs', function () {
+  describe('valid connection to get jobs with domain in settings', function () {
     var response;
     var connector;
     var expectedResponse = require(path.resolve(__dirname, '../fixtures/responses/get_job.api.json'));
     before(function () {
       connector = new WorkflowMax({
         apiKey: config.apiKey, 
-        accountKey: config.accountKey
+        accountKey: config.accountKey,
+        domain: config.domain
       });
       response = connector.get('job.api/get/J0001');
     });
