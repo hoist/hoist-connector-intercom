@@ -4,7 +4,8 @@ module.exports = function (event, done) {
 
   var wfm = Hoist.connector('<key>');
   wfm.get('/task.api/list')
-    .then(function (tasks) {
+    .then(function (result) {
+      var tasks = result.tasks.task;
       var promises = [];
       for (var index = 0; index < tasks.length; index++) {
         promises.push(Hoist.event.raise('task:found', tasks[index]));

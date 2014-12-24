@@ -4,7 +4,8 @@ module.exports = function (event, done) {
 
   var wfm = Hoist.connector('<key>');
   wfm.get('/category.api/list')
-    .then(function (categories) {
+    .then(function (result) {
+      var categorys = result.categories.category;
       var promises = [];
       for (var index = 0; index < categories.length; index++) {
         promises.push(Hoist.event.raise('category:found', categories[index]));

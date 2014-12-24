@@ -5,6 +5,8 @@ module.exports = function (event, done) {
   var wfm = Hoist.connector('<key>');
   wfm.get('/staff.api/list')
     .then(function (staff) {
+    .then(function (result) {
+      var staff = result.staff.staff;
       var promises = [];
       for (var index = 0; index < staff.length; index++) {
         promises.push(Hoist.event.raise('staff:found', staff[index]));
