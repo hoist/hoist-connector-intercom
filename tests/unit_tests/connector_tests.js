@@ -16,6 +16,7 @@ describe('WorkflowMaxConnector', function () {
       accountKey: config.accountKey,
       domain: config.domain + 'test'
     });
+    console.log(config);
   });
   describe('#get', function () {
     describe('with no queryParams', function () {
