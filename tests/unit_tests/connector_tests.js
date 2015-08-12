@@ -6,7 +6,7 @@ var BBPromise = require('bluebird');
 var expect = require('chai').expect;
 var requestPromise = require('request-promise');
 var config = require('config');
-var errors = require('hoist-errors');
+var errors = require('@hoist/errors');
 
 describe('WorkflowMaxConnector', function () {
   var connector;
@@ -16,6 +16,7 @@ describe('WorkflowMaxConnector', function () {
       accountKey: config.accountKey,
       domain: config.domain + 'test'
     });
+    console.log(config);
   });
   describe('#get', function () {
     describe('with no queryParams', function () {

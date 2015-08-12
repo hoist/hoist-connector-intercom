@@ -6,7 +6,7 @@ var path = require('path');
 var expect = require('chai').expect;
 var config = require('config');
 
-describe('WorkflowMaxConnector #delete', function () {
+describe.skip('Integration: WorkflowMaxConnector #delete', function () {
   this.timeout(500000);
   describe('valid connection to delete contacts', function () {
     var response;
@@ -14,7 +14,7 @@ describe('WorkflowMaxConnector #delete', function () {
     var expectedResponse = require(path.resolve(__dirname, '../fixtures/responses/delete_contact.api.json'));
     before(function () {
       connector = new WorkflowMax({
-        apiKey: config.apiKey, 
+        apiKey: config.apiKey,
         accountKey: config.accountKey
       });
       response = connector.delete('client.api/contact/3500761');

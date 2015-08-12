@@ -6,7 +6,7 @@ var path = require('path');
 var expect = require('chai').expect;
 var config = require('config');
 
-describe('WorkflowMaxConnector #post', function () {
+describe.skip('Integration: WorkflowMaxConnector #post', function () {
   this.timeout(500000);
   describe('valid connection to post client with json object', function () {
     var response;
@@ -14,7 +14,7 @@ describe('WorkflowMaxConnector #post', function () {
     var data = {Client:{Name:"John"}};
     before(function () {
       connector = new WorkflowMax({
-        apiKey: config.apiKey, 
+        apiKey: config.apiKey,
         accountKey: config.accountKey
       });
       response = connector.post('client.api/add', data);
@@ -27,14 +27,14 @@ describe('WorkflowMaxConnector #post', function () {
       })).to.become('John');
     });
   });
-  
+
   describe('valid connection to post client with xml', function () {
     var response;
     var connector;
     var data = '<Client><Name>John</Name></Client>';
     before(function () {
       connector = new WorkflowMax({
-        apiKey: config.apiKey, 
+        apiKey: config.apiKey,
         accountKey: config.accountKey
       });
       response = connector.post('client.api/add', data);
