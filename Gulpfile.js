@@ -71,10 +71,10 @@ gulp.task('mocha-server-continue', function (cb) {
 gulp.task('enforce-coverage', ['mocha-server'], function () {
   var options = {
     thresholds: {
-      statements: 80,
-      branches: 80,
-      lines: 80,
-      functions: 80
+      statements: 70,
+      branches: 70,
+      lines: 70,
+      functions: 70
     },
     coverageDirectory: 'coverage',
     rootDirectory: process.cwd()
