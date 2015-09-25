@@ -22,8 +22,8 @@ dependencies:
   override:
     - mkdir -p ~/docker
     - if [[ -e ~/docker/connector-workflowmax.tar ]]; then docker load -i ~/docker/connector-workflowmax.tar; fi
-    - docker build -t quay.io/hoist/connector-workflowmax:${CIRCLE_BRANCH//feature\//} .
-    - docker save "quay.io/hoist/connector-workflowmax" > ~/docker/connector-workflowmax.tar
+    - docker build -t hoist/connector-workflowmax:${CIRCLE_BRANCH//feature\//} .
+    - docker save "hoist/connector-workflowmax" > ~/docker/connector-workflowmax.tar
 test:
   override:
     - docker kill mongodb; true;
@@ -31,7 +31,7 @@ test:
     - docker kill hoist-connector-workflowmax-test; true;
     - docker rm hoist-connector-workflowmax-test; true;
     - docker run -d --name mongodb mongo
-    - docker run -t --link mongodb:db --name hoist-connector-workflowmax-test --entrypoint gulp quay.io/hoist/connector-workflowmax:${CIRCLE_BRANCH//feature\//} test
+    - docker run -t --link mongodb:db --name hoist-connector-workflowmax-test --entrypoint gulp hoist/connector-workflowmax:${CIRCLE_BRANCH//feature\//} test
   post:
     - docker cp hoist-connector-workflowmax-test:/usr/src/app/coverage ~/
 general:
@@ -46,8 +46,8 @@ deployment:
     owner: hoist
     commands:
       - echo ${DOCKER_CONFIG} > .dockercfg
-      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS quay.io
-      - docker push quay.io/hoist/connector-workflowmax:${CIRCLE_BRANCH//feature\//}
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - docker push hoist/connector-workflowmax:${CIRCLE_BRANCH//feature\//}
 notify:
   webhooks:
     - url: https://overlord.hoist.io/api/webhook/circleci?api_token=xc1zrzacmxp9samlj9nya4gzay

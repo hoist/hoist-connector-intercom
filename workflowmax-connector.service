@@ -8,8 +8,8 @@ User=core
 Type=oneshot
 ExecStartPre=-/usr/bin/docker kill workflowmax-connector-deploy
 ExecStartPre=-/usr/bin/docker rm workflowmax-connector-deploy
-ExecStartPre=-/usr/bin/docker pull quay.io/hoist/connector-workflowmax:master
-ExecStart=/usr/bin/docker run -h workflowmax-connector-deploy --name workflowmax-connector-deploy -e "ROOT_CONNECTOR_DIR=/shares/connectors" --volumes-from config -P quay.io/hoist/connector-workflowmax:master
+ExecStartPre=-/usr/bin/docker pull hoist/connector-workflowmax:master
+ExecStart=/usr/bin/docker run -h workflowmax-connector-deploy --name workflowmax-connector-deploy -e "ROOT_CONNECTOR_DIR=/shares/connectors" --volumes-from config -P hoist/connector-workflowmax:master
 ExecStop=/usr/bin/docker stop workflowmax-connector-deploy
 ExecStopPost=-/usr/bin/docker kill workflowmax-connector-deploy
 ExecStopPost=-/usr/bin/docker rm workflowmax-connector-deploy

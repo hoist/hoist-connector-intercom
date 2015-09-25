@@ -33,7 +33,7 @@
   "dependencies": {
     "@hoist/errors": "^1.0.3",
     "@hoist/logger": "^1.0.3",
-    "@hoist/oauth": "^1.0.0",
+    "@hoist/oauth": "^1.0.3",
     "bluebird": "^2.3.11",
     "config": "^1.8.1",
     "jsontoxml": "^0.0.11",
