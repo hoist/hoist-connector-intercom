@@ -1,5 +1,4 @@
 {
-  "domain":"https://api.workflowmax.com",
-  "accountKey":"ACCOUNTKEY",
+  "appId":"APPID",
   "apiKey":"APIKEY"
 }

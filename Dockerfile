@@ -8,7 +8,7 @@ RUN chown hoist:hoist /home/hoist/.npmrc
 
 USER hoist
 
-ENV CONNECTOR_NAME=workflowmax
+ENV CONNECTOR_NAME=intercom
 
 #npm install
 ADD package.json /usr/src/app/package.json

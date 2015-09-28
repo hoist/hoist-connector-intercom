@@ -3,6 +3,6 @@ deploy:
   environment:
    - NODE_ENV=docker
    - ROOT_CONNECTOR_DIR=/shares/connectors
-   - CONNECTOR_NAME=workflowmax
+   - CONNECTOR_NAME=intercom
   volumes_from:
    - hoist_config_1

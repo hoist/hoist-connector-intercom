@@ -1,97 +1,27 @@
 {
-  "name": "Workflow Max",
-  "slug" : "workflowmax",  
-  "url": "http://www.workflowmax.com",
+  "name": "Intercom",
+  "slug" : "intercom",  
+  "url": "http://www.intercom.com",
   "auth_types" : {
     "Private": {
       "setup_help": "./samples/setupHelpPrivate.md"
-    }, 
-    "Public": {
-      "setup_help": ""
     }
   },
   "settings": [{
+    "key": "appId",
+    "type" : "text",
+    "description": "App Id",
+    "for_types": ["Private"],
+    "required": true
+  },{
     "key": "apiKey",
     "type" : "text",
     "description": "API Key",
-    "for_types": ["Private", "Public"],
-    "required": true
-  },{
-    "key": "accountKey",
-    "type" : "text",
-    "description": "Account Key",
-    "for_types": ["Private", "Public"],
-    "required": true
-  },{
-    "key": "domain",
-    "type" : "text",
-    "description": "Domain",
-    "for_types": ["Private", "Public"],
+    "for_types": ["Private"],
     "required": true
   }],
   "samples" : {
     "gettingStarted" : "./samples/gettingStarted.js"
   },
-  "endpoints" : {
-    "category.api" : {
-      "sample" : "./samples/category.js",
-      "docs" : "http://www.workflowmax.com/api/category-methods"
-    },
-    "client.api" : {
-      "sample" : "./samples/client.js",
-      "docs" : "http://www.workflowmax.com/api/client-methods"
-    },
-    "clientgroup.api" : {
-      "sample" : "./samples/clientGroup.js",
-      "docs" : "http://www.workflowmax.com/api/client-group-methods"
-    },
-    "cost.api" : {
-      "sample" : "./samples/cost.js",
-      "docs" : "http://www.workflowmax.com/api/cost-methods" 
-    },
-    "customfield.api" : {
-      "sample" : "./samples/customField.js",
-      "docs" : "http://www.workflowmax.com/api/custom-field-methods"     
-    },
-    "invoice.api" : {
-      "sample" : "./samples/invoice.js",
-      "docs" : "http://www.workflowmax.com/api/invoice-methods" 
-    },
-    "job.api" : {
-      "sample" : "./samples/job.js",
-      "docs" : "http://www.workflowmax.com/api/job-methods"     
-    },
-    "lead.api" : {
-      "sample" : "./samples/lead.js",
-      "docs" : "http://www.workflowmax.com/api/lead-methods"     
-    },
-    "purchaseorder.api" : {
-      "sample" : "./samples/purchaseOrder.js",
-      "docs" : "http://www.workflowmax.com/api/purchase-order-methods"     
-    },
-    "quote.api" : {
-      "sample" : "./samples/quote.js",
-      "docs" : "http://www.workflowmax.com/api/quote-methods"     
-    },
-    "staff.api" : {
-      "sample" : "./samples/staff.js",
-      "docs" : "http://www.workflowmax.com/api/staff-methods"     
-    },
-    "supplier.api" : {
-      "sample" : "./samples/supplier.js",
-      "docs" : "http://www.workflowmax.com/api/supplier-methods"     
-    },
-    "task.api" : {
-      "sample" : "./samples/task.js",
-      "docs" : "http://www.workflowmax.com/api/task-methods"     
-    },
-    "template.api" : {
-      "sample" : "./samples/template.js",
-      "docs" : "http://www.workflowmax.com/api/template-methods"     
-    },
-    "time.api" : {
-      "sample" : "./samples/time.js",
-      "docs" : "http://www.workflowmax.com/api/time-methods"     
-    }
-  }
+  "endpoints" : {}
 }

@@ -2,15 +2,10 @@
 
 module.exports = function (event, done) {
 
-  var wfm = Hoist.connector('<key>');
-  wfm.get('/job.api/current')
+  var intercom = Hoist.connector('<key>');
+  intercom.get('/contact', {emailAddress: 'test@test.com'})
     .then(function (result) {
-      var jobs = result.jobs.job;
-      var promises = [];
-      for (var index = 0; index < jobs.length; index++) {
-        promises.push(Hoist.event.raise('job:found', jobs[index]));
-      }
-      return Hoist.promise.all(promises);
+      return Hoist.log(result);
     })
     .then(done);
 
