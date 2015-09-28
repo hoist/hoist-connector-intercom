@@ -1,69 +1,29 @@
 'use strict';
 require('../bootstrap');
-var WorkflowMax = require('../../lib/connector');
+var Intercom = require('../../lib/connector');
 var fs = require('fs');
 var path = require('path');
 var expect = require('chai').expect;
 var config = require('config');
 
-describe.skip('Integration: WorkflowMaxConnector #get', function () {
-  this.timeout(500000);
-  describe('valid connection to get jobs with domain in settings', function () {
+describe.skip('Integration: IntercomConnector #get', function () {
+  describe('valid connection to get users with query', function () {
     var response;
     var connector;
-    var expectedResponse = require(path.resolve(__dirname, '../fixtures/responses/get_job.api.json'));
+    var expectedResponse = require(path.resolve(__dirname, '../fixtures/responses/get_user.json'));
     before(function () {
-      connector = new WorkflowMax({
+      connector = new Intercom({
         apiKey: config.apiKey,
-        accountKey: config.accountKey,
-        domain: config.domain
+        appId: config.appId,
       });
-      response = connector.get('job.api/get/J0001');
+      response = connector.get('users', {email: 'jamie.wilsons+testingagain@gmail.com'});
     });
     it('returns expected json', function () {
       return expect(response.then(function (json) {
-        return json.Response.Job.Name;
+        return json.id;
       }).catch(function(err) {
         console.log("error", err);
-      })).to.become(expectedResponse.Response.Job.Name);
-    });
-  });
-  describe('valid connection to get clients with query', function () {
-    var response;
-    var connector;
-    var expectedResponse = require(path.resolve(__dirname, '../fixtures/responses/get_client.api.json'));
-    before(function () {
-      connector = new WorkflowMax({
-        apiKey: config.apiKey,
-        accountKey: config.accountKey
-      });
-      response = connector.get('client.api/search', {query:'monkey'});
-    });
-    it('returns expected json', function () {
-      return expect(response.then(function (json) {
-        return json.Response.Clients.Client.Name;
-      }).catch(function(err) {
-        console.log("error", err);
-      })).to.become(expectedResponse.Response.Clients.Client.Name);
-    });
-  });
-  describe('valid connection to get clients with query in path', function () {
-    var response;
-    var connector;
-    var expectedResponse = require(path.resolve(__dirname, '../fixtures/responses/get_client.api.json'));
-    before(function () {
-      connector = new WorkflowMax({
-        apiKey: config.apiKey,
-        accountKey: config.accountKey
-      });
-      response = connector.get('client.api/search?query=monkey');
-    });
-    it('returns expected json', function () {
-      return expect(response.then(function (json) {
-        return json.Response.Clients.Client.Name;
-      }).catch(function(err) {
-        console.log("error", err);
-      })).to.become(expectedResponse.Response.Clients.Client.Name);
+      })).to.become(expectedResponse.id);
     });
   });
 });

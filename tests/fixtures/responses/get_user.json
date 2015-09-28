@@ -1,0 +1,57 @@
+{
+    "type": "user",
+    "id": "55ee3da509d621d5ce000c78",
+    "user_id": "q0d1GZJW11kozhVqNMUX",
+    "anonymous": false,
+    "email": "jamie.wilsons+testingagain@gmail.com",
+    "name": "Jamie",
+    "pseudonym": null,
+    "avatar": {
+        "type": "avatar",
+        "image_url": null
+    },
+    "app_id": "g0efzuon",
+    "companies": {
+        "type": "company.list",
+        "companies": []
+    },
+    "location_data": {
+        "type": "location_data",
+        "city_name": "San Francisco",
+        "continent_code": "NA",
+        "country_name": "United States",
+        "latitude": 37.77719999999999,
+        "longitude": -122.4931,
+        "postal_code": "94121",
+        "region_name": "California",
+        "timezone": "America/Los_Angeles",
+        "country_code": "USA"
+    },
+    "last_request_at": 1441732600,
+    "last_seen_ip": "50.174.145.202",
+    "created_at": 1441676709,
+    "remote_created_at": 1441676708,
+    "signed_up_at": 1441676708,
+    "updated_at": 1443467603,
+    "session_count": 4,
+    "social_profiles": {
+        "type": "social_profile.list",
+        "social_profiles": []
+    },
+    "unsubscribed_from_emails": false,
+    "user_agent_data": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.85 Safari/537.36",
+    "tags": {
+        "type": "tag.list",
+        "tags": []
+    },
+    "segments": {
+        "type": "segment.list",
+        "segments": [
+            {
+                "type": "segment",
+                "id": "547b7cd6e70c44222b00022f"
+            }
+        ]
+    },
+    "custom_attributes": {}
+}
