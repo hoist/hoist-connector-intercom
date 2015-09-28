@@ -1,19 +1,19 @@
 {
-  "name": "hoist-connector-workflowmax",
+  "name": "hoist-connector-intercom",
   "version": "1.0.0",
-  "description": "Hoist's WorkflowMax Connector",
+  "description": "Hoist's Intercom Connector",
   "main": "./lib/connector.js",
   "scripts": {
     "test": "gulp test"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hoist/hoist-connector-workflowmax.git"
+    "url": "https://github.com/hoist/hoist-connector-intercom.git"
   },
   "author": "Hoist Apps Ltd",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hoist/hoist-connector-workflowmax/issues"
+    "url": "https://github.com/hoist/hoist-connector-intercom/issues"
   },
   "devDependencies": {
     "chai": "^1.9.1",
