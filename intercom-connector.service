@@ -1,0 +1,19 @@
+[Unit]
+Description=Deployment for Intercom Connector
+Requires=config.service
+After=config.service
+
+[Service]
+User=core
+Type=oneshot
+ExecStartPre=-/usr/bin/docker kill intercom-connector-deploy
+ExecStartPre=-/usr/bin/docker rm intercom-connector-deploy
+ExecStartPre=-/usr/bin/docker pull hoist/connector-intercom:master
+ExecStart=/usr/bin/docker run -h intercom-connector-deploy --name intercom-connector-deploy -e "ROOT_CONNECTOR_DIR=/shares/connectors" --volumes-from config -P hoist/connector-intercom:master
+ExecStop=/usr/bin/docker stop intercom-connector-deploy
+ExecStopPost=-/usr/bin/docker kill intercom-connector-deploy
+ExecStopPost=-/usr/bin/docker rm intercom-connector-deploy
+TimeoutStartSec=30m
+
+[X-Fleet]
+MachineMetadata=container_type=web
