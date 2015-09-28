@@ -1,4 +1,4 @@
-hoist-connector-workflowmax
+hoist-connector-intercom
 ===========================
 
-Hoist Connect's WorkflowMax Connector
+Hoist Connect's Intercom Connector
