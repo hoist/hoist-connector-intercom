@@ -1,11 +1,11 @@
 'use strict';
-
 var baseUrl = 'https://api.intercom.io';
 var requestPromise = require('request-promise');
 var logger = require('@hoist/logger');
 var url = require('url');
 var _ = require('lodash');
 var errors = require('@hoist/errors');
+
 
 function IntercomConnector(settings) {
   logger.info({
@@ -21,7 +21,7 @@ IntercomConnector.prototype.get = function (url, queryParams) {
 
 IntercomConnector.prototype.post = function (url, data) {
   logger.info('inside hoist-connector-intercom.post');
-  if (!data) {
+  if(!data){
     throw new errors.connector.request.InvalidError('no data specified in post');
   }
   return this.request('POST', url, null, data);
@@ -29,7 +29,7 @@ IntercomConnector.prototype.post = function (url, data) {
 
 IntercomConnector.prototype.put = function (url, data) {
   logger.info('inside hoist-connector-intercom.put');
-  if (!data) {
+  if(!data){
     throw new errors.connector.request.InvalidError('no data specified in put');
   }
   return this.request('PUT', url, null, data);
@@ -41,7 +41,7 @@ IntercomConnector.prototype.delete = function (url, queryParams, data) {
 };
 
 IntercomConnector.prototype.request = function request(method, path, queryParams, data) {
-  if (!path) {
+  if(!path){
     throw new errors.connector.request.InvalidError('no path specified');
   }
 
@@ -49,13 +49,13 @@ IntercomConnector.prototype.request = function request(method, path, queryParams
     method: method,
     path: path
   }, 'inside hoist-connector-intercom.request');
-
+  
   /* If a forward slash is provided, remove it */
-  path = path[path.length - 1] === '/' ? path.slice(0, -1) : path;
+  path = path[path.length -1] === '/'? path.slice(0, -1) : path;
 
   var parsedUrl = url.parse(path, true);
 
-  if (queryParams) {
+  if(queryParams) {
     parsedUrl.query = _.assign(parsedUrl.query, queryParams);
   }
 
@@ -63,38 +63,39 @@ IntercomConnector.prototype.request = function request(method, path, queryParams
 
   var uri = url.resolve(baseUrl, path);
   var options = {
-    uri: uri,
-    method: method,
+    uri : uri,
+    method : method,
     resolveWithFullResponse: true,
     auth: {
       user: this.settings.appId,
-      pass: this.settings.apiKey
+      pass: this.settings.apiKey,
     },
     headers: {
-      "Accept": "application/json"
+      "Accept" : "application/json"
     }
   };
 
-  if (method === 'POST' || method === 'PUT') {
+  if(method === 'POST' || method === 'PUT') {
     options.body = data;
     options.json = true;
     options.contentType = 'application/json';
   }
 
-  return this.requestPromiseHelper(options).then(function (request) {
-    logger.info({
-      json: request.body
-    }, 'got response from request');
-    if (request.body === "body") {
-      return { body: 'body' };
-    }
-    return typeof request.body === 'string' ? JSON.parse(request.body) : request.body;
-  });
+  return this.requestPromiseHelper(options)
+    .then(function(request) {
+      logger.info({
+        json: request.body
+      }, 'got response from request');
+      if(request.body === "body") { 
+        return {body: 'body'}; 
+      }
+      return typeof request.body === 'string' ? JSON.parse(request.body) : request.body;
+    });
+
 };
 
-IntercomConnector.prototype.requestPromiseHelper = function requestPromiseHelper(options) {
+IntercomConnector.prototype.requestPromiseHelper = function requestPromiseHelper (options) {
   return requestPromise(options);
 };
 
 module.exports = IntercomConnector;
-//# sourceMappingURL=connector.js.map
