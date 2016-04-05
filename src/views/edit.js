@@ -19,22 +19,31 @@ class EditForm extends C.View {
     return (
       <C.Page default="setup" {...this.props}>
         <C.Panel name="Setup" slug="setup">
-          <UI.FormElements.Button text={this.props.connectorInstance ? 'Reauthorize' : 'Connect'} type="large" onClick={()=>{
-              return this.connect();
-            }} />
+          <C.Column type="notes">
+          <h1>Adding an Intercom Connector</h1>
+          <ol>
+            <li>Log into your Intercom Account.</li>
+            <li>Click the settings cog in right side of the main navigation, and select 'Integrations for &#123;Your App Name&#125;'.</li>
+            <li>Select "API Keys" from the left hand navigation.</li>
+            <li>Click "Create Full Access API Key".</li>
+            <li>Copy the App Id and your new API Key from that page into this form. </li>
+          </ol>
+          </C.Column>
+          <C.Column>
+            <form
+              onChange={(evt) => {this.props.updateField(evt);}}
+              onSubmit={(evt) => {this.props.updateSettings(evt);}}>
+              <UI.FormElements.Input
+                inactive={!!(this.props.connectorInstance)}
+                placeholder="Key" name="key" label="Key" type="text" value={this.props._key} />
+              <UI.FormElements.Input
+                placeholder="App Id" name="appId" label="App Id" type="text" value={this.props.settings.appId} />
+              <UI.FormElements.Input
+                placeholder="API Key" name="apiKey" label="API Key" type="text" value={this.props.settings.apiKey} />
+              <UI.FormElements.Button text={'Save'} loading={this.props.saving} type="large" submit={true} onClick={this.props.updateSettings} />
+            </form>
+          </C.Column>
         </C.Panel>
-        {this.props.connectorInstance ? <C.Panel name="Events" slug="events">
-        <C.PageHeader
-          title="Check the boxes of the events you want to subscribe to."
-          subTitle="Checking a box will automatically subscribe you to that event." />
-          <C.CheckboxGrid
-            items={this.props.connectorInstance.events}
-            checked={this.props.connectorInstance.subscribedEvents}
-            onChange={this.props.onSubscribe} />
-        </C.Panel> : <C.Panel name="Events" slug="events">
-          <C.EventsGrid.Header
-            title="Events are available once you've connected." />
-        </C.Panel>}
       </C.Page>
     );
   }
